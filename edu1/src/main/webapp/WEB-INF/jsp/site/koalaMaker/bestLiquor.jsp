@@ -3,8 +3,7 @@
 
     <!-- sub title -->
     <div class="sub-title">
-        <h2>인기 전통주</h2>
-        
+        <div class="post-meta" style="text-align: center;"><span class="date">&bullet; 인기 전통주  &bullet;</span> <span class="mx-1"></span></div>
         
         <a href="<c:url value="/"/>" class="back-btn"><i class="i_go_back"></i></a>
     </div>

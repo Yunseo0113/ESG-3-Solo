@@ -3,8 +3,7 @@
 <div class="row">
 	
 	<!-- 왼쪽 메뉴 -->
-	
-	<h3>알콜중독 자가진단</h3>
+	<div class="post-meta" style="text-align: center;"><span class="date">&bullet; 알콜중독 자가진단  &bullet;</span> <span class="mx-1"></span></div>
 	<!-- 컨텐츠 내용 -->
 	
 </div>

@@ -23,6 +23,7 @@ import egovframework.com.cmm.paging.PagingAccess;
 import egovframework.com.cmm.service.ComCmmFileService;
 import egovframework.com.cmm.util.EgovClntInfo;
 import egovframework.com.cmm.util.EgovStringUtil;
+import kr.co.jointree.edu1.site.koala.service.koalaService;
 import kr.co.jointree.edu1.site.sample1.service.SiteSample1Service;
 @Controller
 public class koalaController {
@@ -30,7 +31,7 @@ public class koalaController {
     public static Logger log = LoggerFactory.getLogger(koalaController.class);
 
     @Autowired
-    SiteSample1Service siteSample1Service;
+    koalaService koalaService;
     
     @Autowired
     ComCmmFileService comCmmFileService;
@@ -60,36 +61,27 @@ public class koalaController {
      * @throws IOException 
      * @throws IllegalStateException 
      */
-    @PostMapping(value = {"/singup.do"})
-    public String siteFormSave(
+    @GetMapping(value = {"/koala/login.do"})
+    public String loginkoway(
     		HttpServletRequest request
     		,Model model
     		,@RequestParam Map<String, Object> paramMap
-    		,List<MultipartFile> fileData
-    ) throws IllegalStateException, IOException {
-        log.debug("siteForm");
-        log.debug("paramMap : {}", paramMap);
-
-        paramMap.put("param_date", LocalDateTime.now());
-        paramMap.put("param_ip", EgovClntInfo.getClntIP(request));
-        paramMap.put("param_id", "jointree");
-        
-        long paramFileSeq = Long.parseLong(EgovStringUtil.isNullToString(paramMap.get("file_seq"), "0"));
-        
-        //파일첨부
-        long fileSeq = comCmmFileService.setFileUpload("D:/data/upload/edu1/post/", "POST", fileData, paramFileSeq);
-        paramMap.put("file_seq", fileSeq);
-        
-        if(paramMap.getOrDefault("post_seq", "").equals("")) {
-        //등록
-        	siteSample1Service.setSample1Insert(paramMap);	
-        } else {
-        //수정
-        	siteSample1Service.setSample1Update(paramMap);
-        }
-        
-        return "redirect:/main.do";
+    ) {
+        log.debug("login");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/login.site";
     }
+    @GetMapping(value = {"/koala/singUp.do"})
+    public String singUpkoway(
+    		HttpServletRequest request
+    		,Model model
+    		,@RequestParam Map<String, Object> paramMap
+    ) {
+        log.debug("singUp");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/singUp.site";
+    }
+    
     @GetMapping(value = {"/koala/koalaIntroduce.do"})
     public String koalaIntroduce(HttpServletRequest request,Model model,@RequestParam Map<String, Object> paramMap) {
         log.debug("subYStest");

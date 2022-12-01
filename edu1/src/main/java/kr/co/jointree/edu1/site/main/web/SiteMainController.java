@@ -46,5 +46,25 @@ public class SiteMainController {
         //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
         return "/site/main/main.site";
     }
+    @GetMapping(value = {"/login.do"})
+    public String login(
+    		HttpServletRequest request
+    		,Model model
+    		,@RequestParam Map<String, Object> paramMap
+    ) {
+        log.debug("login");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/login.site";
+    }
+    @GetMapping(value = {"/singUp.do"})
+    public String singUp(
+    		HttpServletRequest request
+    		,Model model
+    		,@RequestParam Map<String, Object> paramMap
+    ) {
+        log.debug("singUp");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/singUp.site";
+    }
     
 }

@@ -23,6 +23,7 @@ import egovframework.com.cmm.paging.PagingAccess;
 import egovframework.com.cmm.service.ComCmmFileService;
 import egovframework.com.cmm.util.EgovClntInfo;
 import egovframework.com.cmm.util.EgovStringUtil;
+import kr.co.jointree.edu1.site.koalaTest.service.koalaTestService;
 import kr.co.jointree.edu1.site.sample1.service.SiteSample1Service;
 @Controller
 public class koalaTestController {
@@ -30,7 +31,7 @@ public class koalaTestController {
     public static Logger log = LoggerFactory.getLogger(koalaTestController.class);
 
     @Autowired
-    SiteSample1Service siteSample1Service;
+    koalaTestService koalaTestService;
     
     @Autowired
     ComCmmFileService comCmmFileService;
@@ -61,7 +62,26 @@ public class koalaTestController {
      * @throws IllegalStateException 
      */
     
-    
+    @GetMapping(value = {"/koalaTest/login.do"})
+    public String loginkoway(
+    		HttpServletRequest request
+    		,Model model
+    		,@RequestParam Map<String, Object> paramMap
+    ) {
+        log.debug("login");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/login.site";
+    }
+    @GetMapping(value = {"/koalaTest/singUp.do"})
+    public String singUpkoway(
+    		HttpServletRequest request
+    		,Model model
+    		,@RequestParam Map<String, Object> paramMap
+    ) {
+        log.debug("singUp");
+        //tiles.xml 을 사용해서 jsp를 불러오는거임 . name
+        return "/site/main/singUp.site";
+    }
   
     @GetMapping(value = {"/koalaTest/selfDiagnosis.do"})
     public String koalaMaker(HttpServletRequest request,Model model,@RequestParam Map<String, Object> paramMap) {
